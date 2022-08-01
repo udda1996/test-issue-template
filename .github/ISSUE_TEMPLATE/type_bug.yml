@@ -31,6 +31,19 @@ body:
       placeholder: What are the versions affected?
     validations:
       required: false
+  - type: dropdown
+    id: labels
+    attributes:
+      label: Labels
+      description: Tag the issue with related issues
+      multiple: false
+      options:
+        - Language Features
+        - Standard Libraries
+        - Website
+        - Connectors
+        - Tooling 
+
   - type: textarea
     id: related-issues
     attributes:
