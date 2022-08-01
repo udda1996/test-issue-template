@@ -1,0 +1,46 @@
+name: Add issue labels
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  Add-label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Check for Language Features label
+        if: ${{ contains(github.event.issue.body, 'Language Features') }}
+        run: gh issue edit $ISSUE --add-label "Language Features"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+
+      - name: Check for Standard Libraries label
+        if: ${{ contains(github.event.issue.body, 'Standard Libraries') }}
+        run: gh issue edit $ISSUE --add-label "Standard Libraries"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+
+      - name: Check for Website label
+        if: ${{ contains(github.event.issue.body, 'Website') }}
+        run: gh issue edit $ISSUE --add-label "Website"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+
+      - name: Check for Connectors label
+        if: ${{ contains(github.event.issue.body, 'Connectors') }}
+        run: gh issue edit $ISSUE --add-label "Connectors"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+
+      - name: Check for Tooling label
+        if: ${{ contains(github.event.issue.body, 'Tooling') }}
+        run: gh issue edit $ISSUE --add-label "Tooling"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
